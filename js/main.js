@@ -1,4 +1,4 @@
-/* main.js — reveals, the specular highlight on every glass pane,
+/* main.js: reveals, the specular highlight on every glass pane,
    nav state, and the motion switch. */
 (function () {
   'use strict';

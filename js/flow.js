@@ -1,4 +1,4 @@
-/* flow.js — the iridescent surface everything else refracts.
+/* flow.js: the iridescent surface everything else refracts.
    A full-screen fragment shader: domain-warped flow, thin-film colour,
    and a pointer that pushes the liquid around. Degrades to CSS if WebGL is out. */
 (function () {
@@ -48,21 +48,21 @@
     '}',
 
     // -- palette ----------------------------------------------------------
-    // Pale gold, sea glass, dusk violet, blush. Held near the top of the
+    // Pale gold, sea glass, steel blue, bronze. Held near the top of the
     // value range so the page stays porcelain rather than painted.
     'vec3 palette(float t, float sheen){',
-    '  vec3 aurum = vec3(0.937, 0.851, 0.639);',
-    '  vec3 verre = vec3(0.545, 0.816, 0.804);',
-    '  vec3 dusk  = vec3(0.616, 0.573, 0.925);',
-    '  vec3 rose  = vec3(0.965, 0.686, 0.729);',
+    '  vec3 aurum  = vec3(0.945, 0.851, 0.612);',
+    '  vec3 verre  = vec3(0.510, 0.749, 0.769);',
+    '  vec3 steel  = vec3(0.404, 0.502, 0.729);',
+    '  vec3 bronze = vec3(0.839, 0.639, 0.416);',
     '  vec3 c = mix(aurum, verre, smoothstep(0.02, 0.46, t));',
-    '  c = mix(c, dusk, smoothstep(0.38, 0.80, t));',
-    '  c = mix(c, rose, smoothstep(0.68, 1.0, t) * 0.85);',
+    '  c = mix(c, steel, smoothstep(0.38, 0.82, t));',
+    '  c = mix(c, bronze, smoothstep(0.70, 1.0, t) * 0.80);',
     // thin-film interference riding the gradient
-    '  vec3 film = 0.5 + 0.5 * cos(6.28318 * (vec3(0.00, 0.33, 0.67) + sheen * 0.45));',
-    '  c = mix(c, film, 0.11);',
+    '  vec3 film = 0.5 + 0.5 * cos(6.28318 * (vec3(0.62, 0.86, 0.14) + sheen * 0.42));',
+    '  c = mix(c, film, 0.09);',
     '  float lum = dot(c, vec3(0.299, 0.587, 0.114));',
-    '  return clamp(mix(vec3(lum), c, 1.30), 0.0, 1.0);',
+    '  return clamp(mix(vec3(lum), c, 1.40), 0.0, 1.0);',
     '}',
 
     'void main(){',
@@ -93,21 +93,21 @@
 
     '  p += vec2(0.0, uScroll * 0.11);',
 
-    // domain warp — two passes, so the flow folds over itself
+    // domain warp, two passes, so the flow folds over itself
     '  vec2 q = vec2(fbm3(p * 1.8 + vec2(0.0, t)), fbm3(p * 1.8 + vec2(5.2, 1.3 - t)));',
     '  vec2 r2 = vec2(fbm3(p * 2.1 + q * 1.8 + vec2(1.7, 9.2) + t * 1.25),',
     '                 fbm3(p * 2.1 + q * 1.8 + vec2(8.3, 2.8) - t * 0.95));',
     '  float f = fbm4(p * 2.2 + r2 * 1.6);',
 
-    // caustics — thin bright veins where the flow field folds
+    // caustics: thin bright veins where the flow field folds
     '  float vein = 1.0 - abs(2.0 * fbm3(p * 3.5 + r2 * 2.2 + t * 0.6) - 1.0);',
     '  vein = pow(clamp(vein, 0.0, 1.0), 9.0);',
 
-    // where colour is allowed to gather at all — keeps large porcelain rests
+    // where colour is allowed to gather at all, keeping large porcelain rests
     '  float mask = smoothstep(0.24, 0.78, fbm3(p * 0.85 + vec2(t * 0.7, -t * 0.45)));',
 
     '  float sheen = f * 0.55 + length(r2 - 0.5) * 0.7 + lens * 0.35;',
-    '  float tone = clamp((f - 0.42) * 2.55 + 0.36, 0.0, 1.0);',
+    '  float tone = clamp((f - 0.42) * 2.45 + 0.28, 0.0, 1.0);',
     '  vec3 col = palette(tone, sheen);',
 
     // a surface normal inferred from the flow, lit from upper left
@@ -117,9 +117,9 @@
     '  float diff = 0.86 + 0.20 * dot(n, L);',
     '  float spec = pow(max(dot(n, normalize(L + vec3(0.0, 0.0, 1.0))), 0.0), 16.0);',
 
-    // lift toward porcelain — colour is a suggestion, not a wash
+    // lift toward porcelain: colour is a suggestion, not a wash
     '  vec3 ground = vec3(0.957, 0.961, 0.973);',
-    '  float presence = (0.20 + 0.52 * smoothstep(0.14, 0.96, f)) * (0.42 + 0.72 * mask);',
+    '  float presence = (0.22 + 0.56 * smoothstep(0.14, 0.96, f)) * (0.44 + 0.74 * mask);',
     '  col = mix(ground, col * diff, clamp(presence, 0.0, 0.90) * uIntro);',
 
     '  col += vec3(1.0) * vein * 0.085 * (0.35 + mask);',
@@ -140,7 +140,7 @@
     gl.shaderSource(s, src);
     gl.compileShader(s);
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-      console.warn('flow: shader failed —', gl.getShaderInfoLog(s));
+      console.warn('flow: shader failed:', gl.getShaderInfoLog(s));
       return null;
     }
     return s;
