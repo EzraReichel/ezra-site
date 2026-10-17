@@ -4,353 +4,318 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ezra Reichel</title>
-<meta name="description" content="Ezra Reichel is a builder and student of international business at George Washington University. Founder of Aethelstan and TradeLead, business development at gtm/os.">
+<meta name="description" content="I build AI agents that do real work for the mid-market. Founder of Aethelstan and TradeLead, business development at gtm/os. Oakland to Washington, D.C.">
 <meta name="author" content="Ezra Reichel">
 <meta property="og:title" content="Ezra Reichel">
-<meta property="og:description" content="I am a curious builder. I use technology to solve problems, I am interested in business and finance, and I have a passion for literature.">
+<meta property="og:description" content="I build agents that do the desk work, so the people with the actual skill can do the actual job.">
 <meta property="og:type" content="profile">
 <meta property="og:image" content="assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ECEDE9">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/Fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/NotoSerifSC-numerals.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- Refraction filters for the glass surfaces -->
-<svg class="filters" aria-hidden="true" focusable="false" width="0" height="0">
-  <defs>
-    <filter id="warp-soft" x="-16%" y="-16%" width="132%" height="132%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.011" numOctaves="2" seed="7" result="n"/>
-      <feGaussianBlur in="n" stdDeviation="3" result="ns"/>
-      <feDisplacementMap in="SourceGraphic" in2="ns" scale="26" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <filter id="warp-edge" x="-16%" y="-16%" width="132%" height="132%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.014" numOctaves="1" seed="19" result="n"/>
-      <feGaussianBlur in="n" stdDeviation="2" result="ns"/>
-      <feDisplacementMap in="SourceGraphic" in2="ns" scale="42" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
+<a class="skip" href="#thesis">Skip to content</a>
 
-<canvas id="flow" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
+<!-- The ink. A real fluid simulation; the cursor is a wet brush. -->
+<canvas id="ink" aria-hidden="true"></canvas>
 
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="topbar">
-  <a class="mark" href="#top" aria-label="Ezra Reichel, back to top">
-    <span class="mark-glyph">ER</span>
-  </a>
-  <nav class="rail glass" aria-label="Sections">
-    <a href="#about">About</a>
-    <a href="#ventures">Ventures</a>
+<header class="top">
+  <a class="mark" href="#top" aria-label="Ezra Reichel, top of page">ER</a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#thesis">Why</a>
+    <a href="#built">Built</a>
     <a href="#work">Work</a>
-    <a href="#writing">Writing</a>
-    <a class="rail-cta" href="#contact">Contact</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<main id="main">
+<main id="top">
 
-  <!-- ───────────────────────── hero ───────────────────────── -->
-  <section class="hero" id="top">
-    <p class="eyebrow reveal">Oakland <span class="arrow">→</span> Washington, D.C.</p>
-    <h1 class="reveal delay-1">Ezra&nbsp;Reichel</h1>
-    <div class="hero-body reveal delay-2">
+  <!-- 一 ───────────────────────────────────────────── -->
+  <section class="chap hero" id="hero">
+    <div class="num" lang="zh" aria-hidden="true">一</div>
+    <div class="body">
+      <p class="eyebrow">Founder · builder · operator</p>
+      <h1>Ezra<br>Reichel</h1>
       <p class="lead">
-        I am a curious builder. I use technology to solve problems, I am interested
-        in business &amp; finance, and I have a passion for literature; reading and
-        writing. I&rsquo;m a full-time student and building an operated agent for social
-        media on the side. I&rsquo;m entrepreneurial and driven, and believe that
-        creativity is a necessary component for any work. I live and study in
-        Washington, D.C.
+        I build AI agents that do real work. Not demos, not a chatbot waiting for a prompt.
+        Systems that run on a schedule, publish, check their own results, and get better
+        the next week. I started with social media and outbound because I had done
+        both by hand, and I knew which parts nobody should have to.
       </p>
-
-      <div class="orbit">
-        <p class="orbit-label">Worked with</p>
-        <a class="chip glass" href="https://gtmos.run" target="_blank" rel="noopener">
-          <span class="chip-mark is-fill"><img src="assets/img/logos/gtmos.svg" alt="" width="96" height="96" loading="lazy"></span>
-          <span class="chip-text">
-            <span class="chip-name">gtm/os</span>
-            <span class="chip-role">Business development</span>
-          </span>
-        </a>
-        <a class="chip glass" href="https://www.advan.us" target="_blank" rel="noopener">
-          <span class="chip-mark"><img src="assets/img/logos/advan.png" alt="" width="96" height="96" loading="lazy"></span>
-          <span class="chip-text">
-            <span class="chip-name">Advan Research</span>
-            <span class="chip-role">Sales enablement</span>
-          </span>
-        </a>
-        <a class="chip glass" href="https://www.westfieldacademy.net" target="_blank" rel="noopener">
-          <span class="chip-mark"><img src="assets/img/logos/westfield.png" alt="" width="96" height="96" loading="lazy"></span>
-          <span class="chip-text">
-            <span class="chip-name">Westfield Academy</span>
-            <span class="chip-role">Debate coach</span>
-          </span>
-        </a>
-      </div>
+      <p class="hero-line">
+        I build for the people who never got the chance to start a company. I have built
+        and run two companies solo, and both are live for customers today. I study business
+        at GW and spend most of my time on data and AI.
+      </p>
     </div>
-
-    <div class="standing glass reveal delay-3">
-      <div class="standing-item">
-        <span class="k"><span class="live" aria-hidden="true"></span>Now</span>
-        <span class="v">Founder, <a href="https://www.aethelstan.media" target="_blank" rel="noopener">Aethelstan</a></span>
+    <figure class="portrait">
+      <div class="portrait-ink">
+        <img src="assets/img/ezra.jpg" alt="Ezra Reichel" width="800" height="800" loading="eager" decoding="async">
       </div>
-      <div class="standing-item">
-        <span class="k">Also</span>
-        <span class="v">Business development, gtm/os</span>
-      </div>
-      <div class="standing-item">
-        <span class="k">Studying</span>
-        <span class="v">International business, GWU&nbsp;’29</span>
-      </div>
-    </div>
-
-    <a class="cue reveal delay-4" href="#about" aria-label="Read on">
-      <span class="cue-line" aria-hidden="true"></span>
-      <span class="cue-text">Read on</span>
-    </a>
+      <figcaption>Oakland, California → Washington, D.C.</figcaption>
+    </figure>
   </section>
 
-  <!-- ───────────────────────── about ───────────────────────── -->
-  <section class="band" id="about">
-    <div class="wrap">
-      <p class="label reveal">About</p>
-      <div class="about-grid">
-        <div class="prose reveal">
-          <p class="prose-open">I grew up in Oakland. I study international business and political science
-            at George Washington University. In between, I&nbsp;started three things: a clothing resale
-            operation that funded itself, <a href="#tradelead">TradeLead</a>, and
-            <a href="#aethelstan">Aethelstan</a>.</p>
-          <p>I build because it is the fastest way to find out whether an idea is any good.
-            Technology is the tool I reach for first, business is the subject I am formally
-            studying, and literature is what I read when I want to think in a different shape.
-            They feed each other more than people expect.</p>
-          <p>Most of what I make now are systems that carry go-to-market work end to end without
-            a person holding them upright. Not copilots that wait for a prompt, but agents that
-            hold a brand, run on a schedule, publish, measure, and rewrite their own playbook
-            from what the numbers actually said.</p>
-          <p>The part I care about is the boring half: getting a system to check its own work
-            afterwards, and mark a run failed instead of writing it up as a success. That is what
-            decides whether you can leave it running.</p>
-          <p>Before all this I argued competitively for years, and I still coach high school
-            debate. It is the same job as the rest of it: work out what is actually true, then
-            say it in a way that lands.</p>
-        </div>
-        <aside class="glance glass reveal delay-1" aria-label="At a glance">
-          <dl>
-            <div><dt>Based</dt><dd>Washington, D.C.</dd></div>
-            <div><dt>From</dt><dd>Oakland, California</dd></div>
-            <div><dt>Studying</dt><dd>B.S. International Business,<br>minor in Political Science</dd></div>
-            <div><dt>Honors</dt><dd>University &amp; Alumni Award<br>Presidential Academic Scholarship</dd></div>
-            <div><dt>Languages</dt><dd>English, advanced Mandarin</dd></div>
-            <div><dt>Elsewhere</dt><dd>3× Junior Olympian, foil fencing<br>40th, national parliamentary debate</dd></div>
-          </dl>
-        </aside>
-      </div>
+  <!-- 二 ───────────────────────────────────────────── -->
+  <section class="chap" id="thesis">
+    <div class="num" lang="zh" aria-hidden="true">二</div>
+    <div class="body prose">
+      <h2>Why</h2>
+      <p class="first">
+        Most people who could run a company never get to start one. The skill is there. What
+        is missing is everything around it: the marketing, the outreach, the admin, the hours
+        at a desk that a business needs before it earns anything. That work has always cost
+        a payroll. So the plumber works for someone else's plumbing company, the host works
+        for someone else's network, and the profit goes upstairs.
+      </p>
+      <p>
+        The idea I keep coming back to is that people should own what their work produces.
+        For most of history that took capital, because owning a business meant paying people
+        to do the parts you couldn't. Agents change the math. If software can carry the desk
+        work that used to need a staff, then the person with the skill can own the whole
+        business and keep what it earns.
+        <span class="sn">Whoever owns the tools keeps the profit. An agent is a tool that costs a monthly bill.</span>
+      </p>
+      <p>
+        So I build for the middle. A two-person podcast. A one-truck roofing company. A
+        student whose parents don't know anyone in finance. They will never build this for
+        themselves, and they will never be big enough for Google or Meta to build it for them.
+        <span class="sn">The test I use: if the person wouldn't miss the task, it belongs to the agent. If they would, it stays theirs.</span>
+      </p>
+      <p>
+        Everything below is the same idea pointed at different people. Aethelstan gives a
+        small show the content team a network would have. TradeLead gives an independent
+        tradesperson the lead pipeline of a regional company. 6bridge gives a student with no
+        connections the map that kids from connected families are handed by default.
+      </p>
     </div>
   </section>
 
-  <!-- ───────────────────────── ventures ───────────────────────── -->
-  <section class="band" id="ventures">
-    <div class="wrap">
-      <p class="label reveal">Ventures</p>
-      <h2 class="h2 reveal">Two companies, built and operated solo.</h2>
+  <!-- 三 ───────────────────────────────────────────── -->
+  <section class="chap" id="built">
+    <div class="num" lang="zh" aria-hidden="true">三</div>
+    <div class="body">
+      <h2>Built</h2>
+      <p class="sub">Live on three shows today.</p>
 
-      <article class="venture glass reveal" id="aethelstan">
+      <article class="venture">
         <header class="venture-head">
-          <div>
-            <h3>Aethelstan</h3>
-            <p class="venture-role">Founder &amp; operator · 2026&#8202;–&#8202;present · self-funded</p>
-          </div>
-          <a class="venture-link" href="https://www.aethelstan.media" target="_blank" rel="noopener">
-            aethelstan.media <span aria-hidden="true">↗</span>
-          </a>
+          <h3>Aethelstan</h3>
+          <p class="meta">Founder &amp; operator · 2026 to now · self-funded · <a href="https://www.aethelstan.media">aethelstan.media</a></p>
         </header>
-        <div class="venture-grid">
-        <div class="venture-body">
-          <p class="venture-lead">An operated agent for social media.</p>
-          <p>Podcasts and shows publish hundreds of episodes and almost none of it works as
-            short-form. Aethelstan gives a show its own agent: it learns the brand, turns the
-            long-form into a steady stream of clips, posts them on schedule, measures what
-            happened, and uses that to make next week&rsquo;s better. The owner directs and
-            approves. They never open an editor.</p>
-          <p>Nothing about it is a shared model. Each customer&rsquo;s agent holds their brand,
-            their accounts and their goals, and its guidance is rebuilt from what has measurably
-            worked on <em>their</em> accounts. Every run is verified against the calendar
-            afterwards. A run that produced nothing is marked failed, not written up as a success.</p>
+        <div class="prose">
+          <p>
+            An operated agent for social media. A podcast gives it the show, and it does the
+            rest: learns the brand, turns each episode into a week of short clips, posts them
+            on a schedule, reads what happened, and uses that to cut next week's better. The
+            owner approves. They never open an editor.
+            <span class="sn">Partnered with The Daily Beast. Past $1k in monthly revenue with no outside money.</span>
+          </p>
+          <p>
+            Every customer gets their own agent, holding their own brand, accounts and goals.
+            Nothing is a shared model. The part I care about most is the boring half: after
+            every run, the agent checks its own work against the calendar. A run that produced
+            nothing is marked failed. It is never written up as a success.
+          </p>
         </div>
-        <ul class="specs">
-          <li><span class="spec-n">1</span><span class="spec-l">personal agent per customer</span></li>
-          <li><span class="spec-n">8</span><span class="spec-l">specialists it runs</span></li>
-          <li><span class="spec-n">48</span><span class="spec-l">named tools, no free improvisation</span></li>
-          <li><span class="spec-n">10+</span><span class="spec-l">accounts operated</span></li>
-          <li><span class="spec-n">200k+</span><span class="spec-l">listeners behind them</span></li>
-        </ul>
-        </div>
-        <p class="venture-foot">Partnered with <strong>The Daily Beast</strong>. Sole founder and
-          operator; scaled past $1k MRR without outside capital.</p>
-      </article>
 
-      <article class="venture glass reveal" id="tradelead">
-        <header class="venture-head">
-          <div>
-            <h3>TradeLead</h3>
-            <p class="venture-role">Founder · lead generation SaaS for tradespeople</p>
-          </div>
-          <span class="venture-link is-static">Wound down</span>
-        </header>
-        <div class="venture-grid">
-        <div class="venture-body">
-          <p class="venture-lead">Leads for plumbers, electricians and roofers, delivered by text
-            at 9:30 in the morning.</p>
-          <p>TradeLead found real local businesses, enriched them into named contacts, wrote the
-            outreach for each one, and messaged the operator when the day&rsquo;s batch was ready.
-            Thousands of leads went out to local tradespeople.</p>
-          <p>The interesting constraint was cost. Tradespeople will not pay agency prices, so the
-            whole stack had to run for less than a dinner: Supabase, Railway, Google Places,
-            Hunter, Claude, Twilio, Stripe, roughly $15 a month at launch. Break-even was two
-            customers. That is the only reason the price worked.</p>
-        </div>
-        <ul class="specs">
-          <li><span class="spec-n">~$15</span><span class="spec-l">monthly infrastructure at launch</span></li>
-          <li><span class="spec-n">2</span><span class="spec-l">customers to break even</span></li>
-          <li><span class="spec-n">1000s</span><span class="spec-l">of leads delivered</span></li>
+        <figure class="pipe" aria-labelledby="pipe-cap">
+          <ol class="pipe-steps">
+            <li><b>Episode</b><span>a new episode lands</span></li>
+            <li><b>Moments</b><span>transcript scored for the best minutes</span></li>
+            <li><b>Cut</b><span>vertical clip, captions, cover</span></li>
+            <li><b>Approve</b><span>the owner says yes or sends a note</span></li>
+            <li><b>Post</b><span>scheduled to Instagram and Facebook</span></li>
+            <li><b>Verify</b><span>checks every post went live</span></li>
+            <li><b>Learn</b><span>reads the numbers, rewrites the playbook</span></li>
+          </ol>
+          <svg class="pipe-loop" viewBox="0 0 700 34" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M690 4 V18 Q690 28 680 28 H20 Q10 28 10 18 V10" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+            <path d="M5 13 L10 5 L15 13" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <figcaption id="pipe-cap">One loop a week, per show. What it learns on Monday shapes what it cuts on Tuesday.</figcaption>
+        </figure>
+
+        <h4 class="minor">Accounts I run</h4>
+        <ul class="accounts">
+          <li>
+            <a class="acct" href="https://www.instagram.com/tomsykestheroyalist/">
+              <span class="acct-name">The Royalist with Tom Sykes</span>
+              <span class="acct-handle">@tomsykestheroyalist ↗</span>
+            </a>
+            <p><b>2.67M</b> views in the last 30 days, twice the month before. 67 clips, 4,217 new followers, 3,551 clicks through to Tom's Substack and YouTube.</p>
+          </li>
+          <li>
+            <a class="acct" href="https://www.instagram.com/wherepopculturemeetspr/">
+              <span class="acct-name">Where Pop Culture Meets PR</span>
+              <span class="acct-handle">@wherepopculturemeetspr ↗</span>
+            </a>
+            <p><b>353K</b> views across Instagram and Facebook from the first 10 clips, and 972 new followers in the first month.</p>
+          </li>
+          <li>
+            <a class="acct" href="https://www.instagram.com/dailybeastpodclips/">
+              <span class="acct-name">The Daily Beast Podcast</span>
+              <span class="acct-handle">@dailybeastpodclips ↗</span>
+            </a>
+            <p>Started from zero on 28 September. People who see a clip click through to the full episode at <b>5×</b> the rate of my largest account.</p>
+          </li>
         </ul>
+
+        <h4 class="minor">Two clips it cut</h4>
+        <div class="clips">
+          <figure class="clip">
+            <video src="assets/clips/wpcmpr.mp4" poster="assets/clips/wpcmpr.jpg" controls playsinline preload="none" width="540" height="960"></video>
+            <figcaption>Where Pop Culture Meets PR, in the show's own banner and caption style</figcaption>
+          </figure>
+          <figure class="clip">
+            <video src="assets/clips/dailybeast.mp4" poster="assets/clips/dailybeast.jpg" controls playsinline preload="none" width="540" height="960"></video>
+            <figcaption>The Daily Beast Podcast, cut from a full episode</figcaption>
+          </figure>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- ───────────────────────── work ───────────────────────── -->
-  <section class="band" id="work">
-    <div class="wrap">
-      <p class="label reveal">Work</p>
-      <h2 class="h2 reveal">Where I&rsquo;ve been useful.</h2>
+  <!-- 四 ───────────────────────────────────────────── -->
+  <section class="chap" id="work">
+    <div class="num" lang="zh" aria-hidden="true">四</div>
+    <div class="body">
+      <h2>Work</h2>
+      <p class="sub">Where I have been useful to someone else's company.</p>
 
-      <ol class="ledger">
-        <li class="entry reveal">
-          <div class="entry-when"><span class="when-live"><span class="live" aria-hidden="true"></span>Now</span><span class="when-range">since May 2026</span></div>
-          <div class="entry-what">
-            <h3>gtm/os <span class="entry-role">Business Development</span></h3>
-            <p class="entry-where">Washington, D.C.</p>
-            <p>Built the internal dashboard the team runs on: system health and customer
-              relationships in one place. I&rsquo;m the first point of contact for customers and the
-              line back to operations, and I help onboard new tenants and stand up their outbound
-              campaigns.</p>
+      <ol class="roles">
+        <li class="role">
+          <div class="role-when">May 2026 to now</div>
+          <div class="role-what">
+            <h3><a href="https://gtmos.run">gtm/os</a> <span class="role-title">Business development</span></h3>
+            <p class="role-where">Washington, D.C.</p>
+            <p>
+              gtm/os runs outbound for companies as an operated service. When they rebuilt
+              the platform, I wrote the entire v2 codebase: the Claude MCP server, the
+              reporting, the HubSpot integration, and the internal dashboard the team works
+              from. I am also the first person a customer talks to and the line back to
+              operations, and I help stand up campaigns when a new customer comes on.
+            </p>
           </div>
         </li>
-        <li class="entry reveal">
-          <div class="entry-when"><span class="when-range">May – Aug 2026</span></div>
-          <div class="entry-what">
-            <h3>Advan Research Corporation <span class="entry-role">Sales Enablement</span></h3>
-            <p class="entry-where">New York, New York</p>
-            <p>Built a multi-touch outbound lead engine and an intent-signal listener covering three
-              lines of business, and worked with the customer success team on a custom sales
-              dashboard.</p>
-          </div>
-        </li>
-        <li class="entry reveal">
-          <div class="entry-when"><span class="when-range">Aug 2025 – Apr 2026</span></div>
-          <div class="entry-what">
-            <h3>Westfield Academy <span class="entry-role">Debate Coach</span></h3>
-            <p class="entry-where">Remote</p>
-            <p>Wrote and delivered lectures on argumentation, ran practice sessions, and coached
-              students through research and case preparation.</p>
-          </div>
-        </li>
-        <li class="entry reveal">
-          <div class="entry-when"><span class="when-range">Aug 2024 – Aug 2025</span></div>
-          <div class="entry-what">
-            <h3>Gradxiety <span class="entry-role">Business Development</span></h3>
-            <p class="entry-where">San Francisco, California</p>
-            <p>Developed agentic AI workflows for content production and analyzed the business to
-              inform go-to-market strategy. It was the first time I saw an agent do real work
-              on a schedule.</p>
-          </div>
-        </li>
-        <li class="entry reveal">
-          <div class="entry-when"><span class="when-range">Aug 2023 – Nov 2024</span></div>
-          <div class="entry-what">
-            <h3>Online clothing resale <span class="entry-role">Founder</span></h3>
-            <p class="entry-where">Oakland, California</p>
-            <p>Bought clothing in bulk and resold it. Sourcing, pricing, marketing, customer
-              messages and fulfillment, all of it mine. The cheapest business education available.</p>
+        <li class="role">
+          <div class="role-when">May to Aug 2026</div>
+          <div class="role-what">
+            <h3><a href="https://www.advan.us">Advan Research</a> <span class="role-title">Sales enablement</span></h3>
+            <p class="role-where">New York</p>
+            <p>
+              Built a multi-touch outbound lead engine and a listener that watches for buying
+              signals across three lines of business, then worked with the customer success team
+              on a sales dashboard they still use.
+            </p>
           </div>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- ───────────────────────── writing ───────────────────────── -->
-  <section class="band" id="writing">
-    <div class="wrap">
-      <p class="label reveal">Writing</p>
-      <h2 class="h2 reveal">Notes from building in the open.</h2>
-      <p class="section-lead reveal">I write about what actually happens when you put an agent in
-        front of real customers: the go-to-market stack, what breaks, and what the numbers said
-        afterwards.</p>
+  <!-- 五 ───────────────────────────────────────────── -->
+  <section class="chap" id="projects">
+    <div class="num" lang="zh" aria-hidden="true">五</div>
+    <div class="body">
+      <h2>Projects</h2>
+      <p class="sub">Same idea, different people.</p>
 
-      <div class="posts">
-        <a class="post glass reveal" href="https://substack.com/@ezrareichel" target="_blank" rel="noopener">
-          <span class="post-tag">Substack</span>
-          <h3>Ezra Reichel</h3>
-          <p>Building the first fully autonomous operated agent for social media, and sharing the
-            learnings along the way.</p>
-          <span class="post-go">Subscribe <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="post glass reveal delay-1" href="https://gtmos.run/insights/gtm-stack.html" target="_blank" rel="noopener">
-          <span class="post-tag">gtm/os Insights</span>
-          <h3>What even is a GTM stack?</h3>
-          <p>And why yours is probably hurting your close rate.</p>
-          <span class="post-go">Read <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="post glass reveal delay-2" href="https://gtmos.run/insights/personalization-unification.html" target="_blank" rel="noopener">
-          <span class="post-tag">gtm/os Insights</span>
-          <h3>The personalization arms race is over.</h3>
-          <p>The data-unification war just started.</p>
-          <span class="post-go">Read <span aria-hidden="true">↗</span></span>
-        </a>
+      <div class="projects">
+        <article class="project">
+          <h3><a href="https://6bridge.xyz">6bridge</a></h3>
+          <p class="meta">Live · free · open to George Washington University</p>
+          <div class="prose">
+            <p>
+              Everyone you need to meet is six people away. Usually fewer. 6bridge shows you the
+              chain. Upload the connections archive LinkedIn already lets you download, say where
+              you want to go, and it finds who can get you there, how many stops it takes, and
+              drafts the ask.
+            </p>
+            <p>
+              No scraping and no LinkedIn login. The second and third degree come from other
+              members: everyone who joins adds their connections to one shared map, and everyone
+              on it can search it. Built for the GW student who has no industry contacts yet and
+              doesn't know that their roommate's cousin works at the exact company.
+              <span class="sn">Routes are scored on tie strength, people in common, shared employers and schools, then sorted warm, fair, loose.</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <h3>TradeLead</h3>
+          <p class="meta">Live · lead generation for tradespeople</p>
+          <div class="prose">
+            <p>
+              Leads for plumbers, electricians and roofers, delivered by text at 9:30 every
+              morning. TradeLead finds real local businesses, turns them into named contacts,
+              writes the outreach for each one, and messages the operator when the day's batch
+              is ready. Thousands of leads have gone out.
+            </p>
+            <p>
+              The interesting constraint was cost. Tradespeople will not pay agency prices, so
+              the whole stack had to run for less than a dinner. Roughly $15 a month at launch.
+              Break-even was two customers. That is the only reason the price works.
+              <span class="sn">Supabase, Railway, Google Places, Hunter, Claude, Twilio, Stripe. That's the whole company.</span>
+            </p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ───────────────────────── contact ───────────────────────── -->
-  <section class="band band-end" id="contact">
-    <div class="wrap">
-      <p class="label reveal">Contact</p>
-      <h2 class="h2 h2-big reveal">Building something that should<br>run itself? Let&rsquo;s talk.</h2>
-      <div class="links reveal delay-1">
-        <a class="link-card glass" href="mailto:ezra.reichel@gwu.edu">
-          <span class="link-k">Email</span><span class="link-v">ezra.reichel@gwu.edu</span>
-        </a>
-        <a class="link-card glass" href="https://www.linkedin.com/in/ezra-reichel-815bbb323/" target="_blank" rel="noopener">
-          <span class="link-k">LinkedIn</span><span class="link-v">ezra-reichel <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="link-card glass" href="https://substack.com/@ezrareichel" target="_blank" rel="noopener">
-          <span class="link-k">Substack</span><span class="link-v">@ezrareichel <span aria-hidden="true">↗</span></span>
-        </a>
-        <a class="link-card glass" href="https://www.aethelstan.media" target="_blank" rel="noopener">
-          <span class="link-k">Aethelstan</span><span class="link-v">aethelstan.media <span aria-hidden="true">↗</span></span>
-        </a>
-      </div>
+  <!-- 六 ───────────────────────────────────────────── -->
+  <section class="chap" id="proof">
+    <div class="num" lang="zh" aria-hidden="true">六</div>
+    <div class="body">
+      <h2>On paper</h2>
+      <dl class="facts">
+        <div><dt>Studying</dt><dd>B.S. International Business, minor in Political Science, George Washington University, class of 2029</dd></div>
+        <div><dt>Scholarships</dt><dd>Nearly $400,000 awarded across four years, including the Presidential Academic Scholarship and the University &amp; Alumni Award</dd></div>
+        <div><dt>From</dt><dd>Oakland, California</dd></div>
+        <div><dt>Languages</dt><dd>English, advanced Mandarin</dd></div>
+        <div><dt>Debate</dt><dd>Ranked 40th in the nation in parliamentary debate. Still coaches high school teams.</dd></div>
+        <div><dt>Fencing</dt><dd>Three-time Junior Olympian, foil</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 七 ───────────────────────────────────────────── -->
+  <section class="chap" id="contact">
+    <div class="num" lang="zh" aria-hidden="true">七</div>
+    <div class="body">
+      <h2>Contact</h2>
+      <p class="prose first">
+        If you run a company in that middle and want to see what an agent could take off your
+        desk, write to me. If you're building something and want a second pair of hands at
+        2 a.m., also write to me.
+      </p>
+      <ul class="links">
+        <li><a href="mailto:ezra.reichel@gwu.edu">ezra.reichel@gwu.edu</a></li>
+        <li><a href="https://www.linkedin.com/in/ezra-reichel-815bbb323/">LinkedIn</a></li>
+        <li><a href="https://substack.com/@ezrareichel">Substack</a></li>
+        <li><a href="https://www.aethelstan.media">Aethelstan</a></li>
+        <li><a href="https://6bridge.xyz">6bridge</a></li>
+      </ul>
     </div>
   </section>
 
 </main>
 
 <footer class="foot">
-  <span>Ezra Reichel</span>
-  <span class="foot-mid">Washington, D.C.</span>
-  <button class="motion-toggle" type="button" id="motionToggle" aria-pressed="false">
-    <span class="motion-dot" aria-hidden="true"></span><span id="motionLabel">Motion on</span>
-  </button>
+  <span>Ezra Reichel · Washington, D.C.</span>
+  <button type="button" class="motion" id="motion-toggle" aria-pressed="false">Still the ink</button>
 </footer>
 
-<script src="js/flow.js"></script>
-<script src="js/main.js"></script>
+<script src="js/ink.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
